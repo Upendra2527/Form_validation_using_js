@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form</title> 
+    <style>
+        .container {
+            height: 480px;
+            width: 580px;
+            background-color: rgb(15, 12, 12);
+            color: rgb(51, 229, 32);
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+            margin:auto;
+            border-radius:15px;
+        }
+        .form input {
+            height: 20px;
+            width: 125px;
+            border-radius: 6px;
+        }
+        .form {
+            font-size: 20px;
+            line-height: 29px;
+            margin-left: 30px;
+        }
+        h1{
+            color:rgb(8, 244, 48);
+            background-color: black;
+            width:350px;
+            border-radius:10px;
+            height:50px;
+            margin:auto;
+        }
+    </style>
+    <script>
+        function valid(form){
+            var name = form.name.value;
+            if (name == "")
+            {
+                alert("Name should be mentioned");
+                return false; // Prevent form submission
+            }
+            var roll = form.roll.value;
+            if (roll == "")
+            {
+                alert("Roll no should be mentioned");
+                return false; // Prevent form submission
+            }
+            var email = form.email.value;
+            if (email == "")
+            {
+                alert("Email should be mentioned");
+                return false; // Prevent form submission
+            }
+            var p1 = form.password1.value;
+            var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+            if (!passwordPattern.test(p1)) {
+            alert("Password should be at least 8 characters and include both letters and numbers");
+            return false; // Prevent form submission
+        }
+            var p1 = form.password1.value;
+            var p2 = form.password2.value;
+            if(p1!=p2)
+            {
+                alert("password should be matched with the original password");
+                return false;
+            }
+            
+            
+            return true; // Allow form submission if all fields are filled
+        }
+        function popup() {
+            alert("Are you sure you want to submit the form?");
+        }
+        function show(form) {
+            var name = form.name.value;
+            var roll = form.roll.value;
+            var email = form.email.value;
+            alert("Name: " + name + "\nRoll No: " + roll + "\nEmail: " + email);
+        }
+    </script>
+</head>
+<body>
+    <center><h1>Registration Form</h1></center>
+    <div class="container">
+        <div class="form">
+            <form onsubmit="return valid(this)">
+                Enter the Name<br>
+                <input type="text" name="name"><br>
+                Enter your roll no<br>
+                <input type="text" name="roll"><br>
+                Enter your email<br>
+                <input type="email" name="email"><br>    
+                
+                Enter Password<br>
+                <input type="password" name="password1"><br>
+                Confirm Password<br>
+                <input type="password" name="password2"><br>
+                <button type="submit">Submit</button><br>
+                Click here to show the details you entered<br>
+                <button type="button" onclick="show(this.form)">Show</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
